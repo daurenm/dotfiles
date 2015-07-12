@@ -15,8 +15,8 @@ Welcome to my world.
 ## Install
 
 1. `git clone https://github.com/nicknisi/dotfiles.git ~/.dotfiles`
-1. `cd ~/.dotfiles`
-1. `./install.sh`
+2. `cd ~/.dotfiles`
+3. `./install.sh`
 
 ## ZSH Plugins
 

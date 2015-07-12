@@ -1,0 +1,12 @@
+2015/07/12-20:37:49.955 2296 Reusing MANIFEST /home/fox/.config/google-chrome/Default/Session Storage/MANIFEST-000001
+2015/07/12-20:37:49.956 2296 Recovering log #75
+2015/07/12-20:37:50.185 2296 Reusing old log /home/fox/.config/google-chrome/Default/Session Storage/000075.log 
+2015/07/12-21:56:15.503 5168 Compacting 1@1 + 1@2 files
+2015/07/12-21:56:15.671 5168 Generated table #79: 278 keys, 1722061 bytes
+2015/07/12-21:56:15.671 5168 Compacted 1@1 + 1@2 files => 1722061 bytes
+2015/07/12-21:56:15.716 5168 compacted to: files[ 0 0 1 0 0 0 0 ]
+2015/07/12-21:56:15.716 5168 Delete type=2 #72
+2015/07/12-21:56:15.716 5168 Delete type=2 #77
+2015/07/12-23:22:10.455 5168 Level-0 table #81: started
+2015/07/12-23:22:10.544 5168 Level-0 table #81: 1156844 bytes OK
+2015/07/12-23:22:10.623 5168 Delete type=0 #75

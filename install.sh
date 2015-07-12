@@ -2,9 +2,6 @@
 
 echo "Installing dotfiles"
 
-echo "Initializing submodule(s)"
-git submodule update --init --recursive
-
 source install/link.sh
 
 if [ "$(uname)" == "Darwin" ]; then
@@ -31,7 +28,9 @@ if [ "$(uname)" == "Darwin" ]; then
     ln -s nginx/code.dev /usr/local/etc/nginx/sites-enabled/code.dev
 fi
 
-
+if [ "$(uname)" == "Linux" ]; then
+	echo "Running on Linux"
+fi
 echo "Configuring zsh as default shell"
 chsh -s $(which zsh)
 
