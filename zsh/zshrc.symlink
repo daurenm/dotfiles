@@ -76,3 +76,9 @@ source $BASE16_SHELL
 
 stty stop ''
 
+# Caps lock button behavior
+if [ -z $XCAPE ]; then
+	export XCAPE=1
+	setxkbmap -option ctrl:nocaps
+	~/xcape/xcape -e 'Control_L=Escape'
+fi

@@ -8,13 +8,13 @@ set t_ut= " Settings for proper colo display in TMUX
 filetype plugin on
 
 source ~/.vim/plugins.vim
-
 " Color scheme !
 let base16colorspace=256
 set t_Co=256 
 execute "set background=".$BACKGROUND
 execute "colorscheme ".$THEME
 " TAB, INDENTATION SETTINGS and SOME OTHER SETTINGS 
+inoremap jk <esc>
 set nobackup noswapfile writebackup
 set nrformats= "treat all numerals as decimals
 let mapleader = ','
@@ -27,12 +27,12 @@ set shiftwidth=4
 set autoindent
 set hidden
 set ttyfast
-set foldmethod=marker
-function! FoldMethodIndent() 
-	setlocal foldmethod=indent
-endfunction
-autocmd FileType php call FoldMethodIndent()
-set nofoldenable
+"set foldmethod=marker
+"function! FoldMethodIndent() 
+"	setlocal foldmethod=indent
+"endfunction
+"autocmd FileType php call FoldMethodIndent()
+"set nofoldenable
 vnoremap < <gv
 vnoremap > >gv
 set pastetoggle=<F4>
