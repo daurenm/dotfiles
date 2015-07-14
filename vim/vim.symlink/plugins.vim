@@ -17,6 +17,8 @@ Plugin 'mattn/emmet-vim'
 Plugin 'vim-scripts/matchit.zip'
 Plugin 'tComment' 
 Plugin 'bufkill.vim'
+"Plugin 'christoomey/vim-tmux-navigator'
+
 " colorschemes
 Plugin 'chriskempson/base16-vim'
 

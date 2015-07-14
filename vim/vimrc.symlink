@@ -52,6 +52,7 @@ nnoremap <silent> $ g$
 set wildmenu
 set wildmode=list:longest
 nnoremap <leader>, :w<cr>
+nnoremap <F5> :ls<cr>
 " scroll the viewport faster
 nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
@@ -151,4 +152,35 @@ hi def InterestingWord6 guifg=#000000 ctermfg=16 guibg=#ff2c4b ctermbg=195
 
 " toggle syntastic
 map <leader>s :SyntasticToggleNode<cr>
+
+map <silent> <C-h> :call WinMove('h')<cr>
+map <silent> <C-j> :call WinMove('j')<cr>
+map <silent> <C-k> :call WinMove('k')<cr>
+map <silent> <C-l> :call WinMove('l')<cr>
+
+" Window movement shortcuts
+" move to the window in the direction shown, or create a new window
+function! WinMove(key)
+    let t:curwin = winnr()
+    exec "wincmd ".a:key
+    if (t:curwin == winnr())
+        if (match(a:key,'[jk]'))
+            wincmd v
+        else
+            wincmd s
+        endif
+        exec "wincmd ".a:key
+    endif
+endfunction
+
+if has('mouse')
+	set mouse=a
+endif
+
+" toggle invisible characters
+set invlist
+set listchars=tab:▸\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
+highlight SpecialKey ctermbg=none " make the highlighting of tabs less annoying
+set showbreak=↪
+nmap <leader>l :set list!<cr>
 

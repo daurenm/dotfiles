@@ -82,3 +82,9 @@ if [ -z $XCAPE ]; then
 	setxkbmap -option ctrl:nocaps
 	~/xcape/xcape -e 'Control_L=Escape'
 fi
+
+
+
+#initialize Z (https://github.com/rupa/z) 
+. ~/z.sh 
+

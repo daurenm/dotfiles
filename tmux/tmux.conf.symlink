@@ -1,4 +1,4 @@
-#set -g default-command "reattach-to-user-namespace -l zsh"
+#se -g default-command "reattach-to-user-namespace -l zsh"
 # tmux display things in 256 colors
 set -g default-terminal "screen-256color"
 set -g status-utf8 on
@@ -57,7 +57,7 @@ bind N new-window
 
 # split window and fix path for tmux 1.9
 bind | split-window -h -c "#{pane_current_path}"
-bind _ split-window -c "#{pane_current_path}"
+bind - split-window -c "#{pane_current_path}"
 
 # synchronize all panes in a window
 bind y setw synchronize-panes
@@ -86,10 +86,10 @@ set -g mouse-resize-pane on
 set -g mouse-select-window on
 
 # maximizing and restoring windows
-unbind Up
-bind Up new-window -d -n fullscreen \; swap-pane -s fullscreen.1 \; select-window -t fullscreen
-unbind Down
-bind Down last-window \; swap-pane -s fullscreen.1 \; kill-window -t fullscreen
+#unbind Up
+#bind Up new-window -d -n fullscreen \; swap-pane -s fullscreen.1 \; select-window -t fullscreen
+#unbind Down
+#bind Down last-window \; swap-pane -s fullscreen.1 \; kill-window -t fullscreen
 
 # set vi mode for copy mode
 setw -g mode-keys vi
@@ -105,8 +105,23 @@ bind -t vi-copy 'y' copy-selection
 bind C-c run "tmux save-buffer - | reattach-to-user-namespace pbcopy"
 bind C-v run "tmux set-buffer $(reattach-to-user-namespace pbpaste); tmux paste-buffer")
 
+# Close pane without confirm
+#bind-key x kill-pane
+
 ##############################
 ### Color & Style Settings ###
 ##############################
 
 source ~/.dotfiles/tmux/theme.sh
+
+
+##############################
+###  TMUX PLUGIN MANAGER   ###
+##############################
+
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensiblset'
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run '~/.tmux/plugins/tpm/tpm'
