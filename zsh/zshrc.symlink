@@ -64,7 +64,7 @@ fi
 
 # Base16 Shell
 if [ -z "$THEME" ]; then
-	export THEME="base16-atelierforest"
+    export THEME="base16-atelierforest"
 fi
 if [ -z "$BACKGROUND" ]; then
     export BACKGROUND="dark"
@@ -76,15 +76,15 @@ source $BASE16_SHELL
 
 stty stop ''
 
-# Caps lock button behavior
-if [ -z $XCAPE ]; then
-	export XCAPE=1
-	setxkbmap -option ctrl:nocaps
-	~/xcape/xcape -e 'Control_L=Escape'
-fi
-
-
-
 #initialize Z (https://github.com/rupa/z) 
 . ~/z.sh 
 
+# Generate a Alt+R when the control key is pressed and released by itself.
+# Run xcape once.
+if [ -z $XCAPE ] ; then
+		# make CapsLock behave like Ctrl:
+	setxkbmap -option ctrl:nocaps
+
+	# make short-pressed Ctrl behave like Escape:
+	~/xcape/xcape -e 'Control_L=Escape'
+fi

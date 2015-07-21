@@ -21,6 +21,9 @@ alias lld="ls -l | grep ^d"
 alias rmf="rm -rf"
 alias ls="ls ${colorflag}"
 
+# Open any filetype using xdg-open
+alias qwe="xdg-open"
+
 # Helpers
 alias grep='grep --color=auto'
 alias df='df -h' # disk free, in Gigabytes, not bytes

@@ -1,13 +1,14 @@
 " load plugins from vundle
+source ~/.vim/plugins.vim
+
 set nocompatible              " be iMproved, required
 filetype off                  " required
 syntax on
-autocmd! bufwritepost .vimrc source %|AirlineRefresh " Automatic reloading of .vimrc and Airline settings
+autocmd! bufwritepost .vimrc source %|AirlineRefresh " Automatic reloading of .nvimrc and Airline settings
 cnoremap <expr> @ getcmdtype() == ':' ? expand('%:h').'/' : '@' " Easy expansion of the active file directory
 set t_ut= " Settings for proper colo display in TMUX
 filetype plugin on
 
-source ~/.vim/plugins.vim
 " Color scheme !
 let base16colorspace=256
 set t_Co=256 
@@ -15,6 +16,7 @@ execute "set background=".$BACKGROUND
 execute "colorscheme ".$THEME
 " TAB, INDENTATION SETTINGS and SOME OTHER SETTINGS 
 inoremap jk <esc>
+set shell=$SHELL
 set nobackup noswapfile writebackup
 set nrformats= "treat all numerals as decimals
 let mapleader = ','
@@ -25,8 +27,11 @@ set softtabstop=4
 set shiftwidth=4
 "set shiftround
 set autoindent
+set expandtab
 set hidden
 set ttyfast
+set ttyscroll=3
+set lazyredraw
 "set foldmethod=marker
 "function! FoldMethodIndent() 
 "	setlocal foldmethod=indent
@@ -62,18 +67,18 @@ set noerrorbells
 set visualbell
 set t_vb=
 set tm=500
-autocmd BufRead *.py nmap <F2> :update<CR>:!python %<CR>
-autocmd BufRead *.py nmap <F3> :update<CR>:!python3 %<CR>
-nnoremap <silent> [b :bprev<CR>
-nnoremap <silent> ]b :bnext<CR>
-nnoremap <silent> [c :BD<CR>
+nmap <silent> <F2> :update<CR>:!clear && python %<CR>
+nmap <F3> :update<CR>:!clear<cr> && python3 %<CR>
+" nnoremap <silent> [b :bprev<CR>
+" nnoremap <silent> ]b :bnext<CR>
+nnoremap <silent> <C-x> :BD<CR>
 set mouse=a  
 map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
 " YCM settings [Commented] ! 
-"let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+"let g:ycm_global_ycm_extra_conf = '~/.nvim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 "let g:ycm_min_num_of_chars_for_completion = 2
 "nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
 "nnoremap <leader>jd :YcmCompleter GoTo<CR> 
@@ -179,8 +184,65 @@ endif
 
 " toggle invisible characters
 set invlist
-set listchars=tab:▸\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
+set listchars=tab:▸\ ,extends:❯,precedes:❮ "eol:¬ trail:⋅
 highlight SpecialKey ctermbg=none " make the highlighting of tabs less annoying
 set showbreak=↪
 nmap <leader>l :set list!<cr>
 
+" Jedi Plugin conf
+"autocmd FileType python setlocal completeopt-=preview
+
+" toggle cursor line
+nnoremap <leader>i :set cursorline!<cr>
+
+" Wrapping settings
+"set tw=79
+set nowrap
+"set fo-=t
+"set colorcolumn=80
+
+" PHPComplete_Extended complete
+" autocmd FileType php setlocal omnifunc=phpcomplete_extended#CompletePHP
+" autocmd FileType php setlocal completefunc=phpcomplete_extended#CompletePHP
+" let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+" let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
+
+" " NeoComplete
+" " Use neocomplete.
+" let g:neocomplete#enable_at_startup = 0
+" " Use smartcase.
+" let g:neocomplete#enable_smart_case = 1
+" " Set minimum syntax keyword length.
+" let g:neocomplete#sources#syntax#min_keyword_length = 2
+" let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+" " Define dictionary.
+" let g:neocomplete#sources#dictionary#dictionaries = {
+"     \ 'default' : '',
+"     \ 'vimshell' : $HOME.'/.vimshell_hist',
+"     \ 'scheme' : $HOME.'/.gosh_completions'
+"         \ }
+" " Define keyword.
+" if !exists('g:neocomplete#keyword_patterns')
+"     let g:neocomplete#keyword_patterns = {}
+" endif
+" let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+" " Recommended key-mappings.
+" " <CR>: close popup and save indent.
+" inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+" function! s:my_cr_function()
+"   return neocomplete#close_popup() . "\<CR>"
+"   " For no inserting <CR> key.
+"   "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+" endfunction
+" " <TAB>: completion.
+" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" " Enable omni completion.
+" autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+" autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+" autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+" " autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+" autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+" " Enable heavy omni completion.
+" if !exists('g:neocomplete#sources#omni#input_patterns')
+"   let g:neocomplete#sources#omni#input_patterns = {}
+" endif
