@@ -29,6 +29,11 @@ if type -q git
 	alias gl "g log --graph --pretty=format:'%Cred%h%Creset %C(bold blue)%an%C(reset) - %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 end
 
+# tmux
+if type -q tmux
+	alias ta "tmux attach"
+end
+
 if status is-interactive
     # Commands to run in interactive sessions can go here
 end
