@@ -1,7 +1,5 @@
 set fish_greeting ""
 
-# aliases
-
 # nvim
 if type -q nvim
   alias vim "nvim"
@@ -32,6 +30,7 @@ end
 # tmux
 if type -q tmux
 	alias ta "tmux attach"
+	set PATH $PATH ~/.dotfiles/bin
 end
 
 if status is-interactive
