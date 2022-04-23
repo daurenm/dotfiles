@@ -3,8 +3,18 @@ function fish_prompt
 
   echo ''
   set_color purple
-  echo (prompt_pwd --full-length-dirs=2)
+  echo -n (prompt_pwd --full-length-dirs=2) 
 
+	if [ (_is_git_dir) ]
+		set -l git_branch (git branch 3>/dev/null | sed -n '/\* /s///p')
+		set_color normal 
+		echo -n " on "
+		set_color green
+		echo -n " "
+		echo -n $git_branch
+	end 
+
+	echo ''
   if test $last_command_status -eq 0 
     set_color green
   else 
@@ -12,4 +22,9 @@ function fish_prompt
   end
   echo '▷ '
 end
+
+function _is_git_dir
+	echo (command git rev-parse --is-inside-work-tree 2>/dev/null)
+end
+
 
