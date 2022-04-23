@@ -6,7 +6,7 @@ function fish_prompt
   echo -n (prompt_pwd --full-length-dirs=2) 
 
 	if [ (_git_branch_name) ]
-		set -l git_branch (command git branch 3>/dev/null | sed -n '/\* /s///p')
+		set -l git_branch (git branch 3>/dev/null | sed -n '/\* /s///p')
 		set_color normal 
 		echo -n " on "
 		set_color green
@@ -16,7 +16,7 @@ function fish_prompt
 
 	echo ''
   if test $last_command_status -eq 0 
-    set_color blue
+    set_color normal
   else 
     set_color red
   end
